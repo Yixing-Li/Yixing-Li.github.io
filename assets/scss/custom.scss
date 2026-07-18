@@ -6,6 +6,23 @@
   --section-spacing: 60px;
 }
 
+// @media (min-width: 992px) {
+//   #about > .container > .row > .col-lg-4 {
+//     flex: 0 0 29%;
+//     max-width: 29%;
+//   }
+
+//   #about > .container > .row > .col-lg-1 {
+//     flex: 0 0 2%;
+//     max-width: 2%;
+//   }
+
+//   #about > .container > .row > .col-lg-7 {
+//     flex: 0 0 69%;
+//     max-width: 69%;
+//   }
+// }
+
 @media (max-width: 991.98px) {
   :root {
     --navbar-height: 50px;
