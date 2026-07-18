@@ -1,0 +1,88 @@
+{{ $item := .item }}
+{{ $has_attachments := partial "functions/has_attachments" $item }}
+{{ $resource := ($item.Resources.ByType "image").GetMatch "*featured*" }}
+{{ $image_base_width := int (site.Params.list_images.citation_width | default 150) }}
+{{ $image_scale := float ($item.Params.image_scale | default 1) }}
+{{ $image_width1x := int (mul $image_base_width $image_scale) }}
+{{ $image_width2x := mul $image_width1x 2 }}
+{{ $image_width3x := mul $image_width1x 3 }}
+
+<div class="media pub-list-item view-citation" style="margin-bottom: 1rem">
+  {{ with $resource }}
+  {{ $image1x := .Resize (printf "%dx webp" $image_width1x) }}
+  {{ $image2x := .Resize (printf "%dx webp" $image_width2x) }}
+  {{ $image3x := .Resize (printf "%dx webp" $image_width3x) }}
+  <div class="list-item-image citation-image align-self-center mr-3" style="--list-image-width: {{ $image_width1x }}px">
+    <a href="{{ $item.RelPermalink }}">
+      <img src="{{ $image1x.RelPermalink }}"
+           srcset="{{ $image1x.RelPermalink }} 1x, {{ $image2x.RelPermalink }} 2x, {{ $image3x.RelPermalink }} 3x"
+           height="{{ $image1x.Height }}" width="{{ $image1x.Width }}"
+           alt="{{ $item.Title }}" loading="lazy">
+    </a>
+  </div>
+  {{ end }}
+
+  <div class="media-body">
+    {{ if eq $item.Section "awards" }}
+    <i class="fas fa-trophy pub-icon" aria-hidden="true"></i>
+    {{ else }}
+    <i class="far fa-file-alt pub-icon" aria-hidden="true"></i>
+    {{ end }}
+
+    {{/* Award Style */}}
+    {{ if eq $item.Section "awards" }}
+    {{ $award_years := $item.Params.years | default (slice ($item.Date.Format "2006")) }}
+    {{- $item.Title }} ({{ delimit $award_years ", " }}).
+    {{ with $item.Params.publication }}
+      {{- . | markdownify -}}.
+    {{ end }}
+    {{ if $has_attachments }}
+    <div class="btn-links">
+      {{ partial "page_links" (dict "page" $item "is_list" 1) }}
+    </div>
+    {{ end }}
+
+    {{/* APA Style */}}
+    {{ else if eq (site.Params.publications.citation_style | default "apa") "apa" }}
+
+    <span class="article-metadata li-cite-author">
+      {{ partial "page_metadata_authors" $item }}
+    </span>
+    ({{- $item.Date.Format "2006" -}}).
+    <a href="{{ $item.RelPermalink }}">{{ $item.Title }}</a>.
+    {{ if $item.Params.publication_short }}
+      {{- $item.Params.publication_short | markdownify -}}.
+    {{ else if $item.Params.publication }}
+      {{- $item.Params.publication | markdownify -}}.
+    {{ end }}
+    <p class="citation-links">{{ partial "page_links" (dict "page" $item "is_list" 1) }}</p>
+
+    {{/* MLA Style */}}
+    {{ else }}
+
+    <span class="article-metadata li-cite-author">
+      {{ partial "page_metadata_authors" $item }}.
+    </span>
+    <a href="{{ $item.RelPermalink }}">{{ $item.Title }}</a>.
+    {{ if $item.Params.publication_short }}
+      {{- $item.Params.publication_short | markdownify -}},
+    {{ else if $item.Params.publication }}
+      {{- $item.Params.publication | markdownify -}},
+    {{ end }}
+    {{- $item.Date.Format "2006" -}}.
+
+    {{ if $has_attachments }}
+    <div class="btn-links">
+      {{ partial "page_links" (dict "page" $item "is_list" 1) }}
+    </div>
+    {{ end }}
+
+    {{ end }}
+
+    {{ if and (eq $item.Section "publications") $item.Params.tldr }}
+    <p class="publication-tldr">
+      <strong>TL;DR:</strong> {{ $item.Params.tldr | markdownify | emojify }}
+    </p>
+    {{ end }}
+  </div>
+</div>

@@ -8,7 +8,13 @@ appearance:
   theme_day: light
   theme_night: persodark
   font: custom_font
-  font_size: L
+  font_size: S
+
+# List thumbnail widths in CSS pixels. Individual entries can multiply these
+# values by setting `image_scale` in their front matter.
+list_images:
+  compact_width: 150
+  citation_width: 150
 
 # SEO
 
@@ -18,7 +24,7 @@ marketing:
     local_business_type: ''
     org_name: ''
     description: 'Personal page'
-    twitter: 'Gravellesimon'
+    twitter: '@YixingLiYixing'
   analytics:
     google_analytics: ''
     baidu_tongji: ''
@@ -33,7 +39,8 @@ header:
     enable: true
     align: l
     show_logo: true
-    show_language: false
+    brand: Yixing Li
+    show_language: true
     show_day_night: true
     show_search: false
     highlight_active_link: true
@@ -41,13 +48,13 @@ header:
 # Site footer
 
 footer:
-  copyright:
-    notice: '© {year} Simon Gravelle. This work is licensed under {license}.'
-    license:
-      enable: true
-      allow_derivatives: true
-      share_alike: true
-      allow_commercial: true
+  # copyright:
+  #   notice: '© {2026} Yixing Li. This work is licensed under {MIT}.'
+  #   license:
+  #     enable: false
+  #     allow_derivatives: true
+  #     share_alike: true
+  #     allow_commercial: true
 
 # Localization
 
@@ -73,9 +80,9 @@ features:
   privacy_pack:
     enable: false
   repository:
-    url: 'https://github.com/simongravelle/simongravelle.github.io'
+    url: 'https://github.com/Yixing-Li/Yixing-Li.github.io'
     content_dir: content
-    branch: master
+    branch: main
   avatar:
     gravatar: false
     shape: circle

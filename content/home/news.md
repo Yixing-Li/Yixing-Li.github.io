@@ -11,12 +11,12 @@ content:
   filter_button:
     - name: All
       tag: '*'
-    - name: Job
-      tag: Job
-    - name: Personal
-      tag: Personal
-    - name: Outreach
-      tag: Outreach
+    - name: Education
+      tag: Education
+    - name: Research Experience
+      tag: Research Experience
+    # - name: Project
+    #   tag: Project
   count: 3
   offset: 0
 design:

@@ -1,5 +1,129 @@
 /* Custom css - inspired by nickballousite */
 
+:root {
+  --navbar-height: 70px;
+  --page-top-gap: 20px;
+  --section-spacing: 60px;
+}
+
+@media (max-width: 991.98px) {
+  :root {
+    --navbar-height: 50px;
+  }
+}
+@media (min-width: 992px) {
+  .home-section .section-heading.col-lg-4 {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+
+  .home-section .col-lg-8 {
+    flex: 0 0 75%;
+    max-width: 75%;
+  }
+}
+
+.wg-about .avatar {
+  width: 200px;
+  height: 200px;
+}
+
+@media (max-width: 767.98px) {
+  .wg-about .avatar {
+    width: 170px;
+    height: 170px;
+  }
+}
+/*
+ * Keep the header in the document flow so that its real rendered height always
+ * reserves space. This avoids content overlap at different viewport sizes and
+ * browser zoom levels.
+ */
+.header--fixed {
+  position: sticky;
+  top: 0;
+}
+
+body {
+  margin-top: 0;
+}
+
+html {
+  scroll-padding-top: var(--navbar-height);
+}
+
+.page-wrapper {
+  min-height: 100vh;
+}
+
+/*
+ * Use content-driven section heights and fixed spacing. The theme otherwise
+ * switches between 60px and 110px at a viewport breakpoint, which makes the
+ * whitespace jump when browser zoom changes the effective viewport width.
+ */
+.home-section,
+.home-section:first-of-type {
+  padding-top: var(--section-spacing);
+  padding-bottom: var(--section-spacing);
+}
+
+/*
+ * The introduction should never be forced to fill the viewport. Keeping its
+ * height content-driven prevents empty space below it from growing as the
+ * effective viewport becomes larger.
+ */
+.wg-about {
+  height: auto;
+  min-height: 0;
+  align-items: flex-start;
+  margin-bottom: 0;
+  padding-top: var(--page-top-gap) !important;
+  padding-bottom: var(--page-top-gap) !important;
+}
+
+.wg-about .container {
+  margin-bottom: 0;
+}
+
+/* Display News thumbnails to the left without changing other compact lists. */
+.view-compact-news {
+  flex-direction: row-reverse;
+
+  > .ml-3 {
+    margin-right: 1rem;
+    margin-left: 0 !important;
+  }
+}
+
+.list-item-image {
+  flex: 0 0 var(--list-image-width);
+  width: var(--list-image-width);
+  min-width: var(--list-image-width);
+  max-width: none;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: none !important;
+  }
+}
+
+.citation-links {
+  margin-bottom: 0;
+}
+
+.publication-tldr {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.dark .publication-tldr {
+  color: rgba(255, 255, 255, 0.65);
+}
+
 @keyframes slide-from-right {
   0% {
     transform: translateX(150%);
@@ -64,7 +188,7 @@
   line-height: 20px
 }
 
-.nav-link {
+.docs-toc .nav-link {
   padding: 10px 0 0 0;
   margin: 10px 0;
 }
