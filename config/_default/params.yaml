@@ -23,8 +23,8 @@ marketing:
     site_type: Person
     local_business_type: ''
     org_name: ''
-    description: 'Personal page'
-    twitter: '@YixingLiYixing'
+    description: 'Yixing Li is a PhD student in Computer Science at CUHK, researching LLM pre-training, model architectures, interpretability, and training dynamics.'
+    twitter: 'YixingLiYixing'
   analytics:
     google_analytics: ''
     baidu_tongji: ''
