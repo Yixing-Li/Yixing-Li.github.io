@@ -8,7 +8,7 @@ headless: true
 weight: 40
 
 title: Publications
-subtitle: 'See also my [Scholar](https://scholar.google.com/citations?user=9fD2JlYAAAAJ&hl) profile'
+# subtitle: 'See also my [Scholar](deleted_yixing) profile'
 
 content:
   # Filter on criteria
@@ -23,7 +23,7 @@ content:
     exclude_future: false
     exclude_past: false
   # Choose how many pages you would like to display (0 = all pages)
-  count: 6
+  count: 0
   # Choose how many pages you would like to offset by
   offset: 0
   # Page order: descending (desc) or ascending (asc) date.

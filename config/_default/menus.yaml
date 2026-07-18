@@ -10,10 +10,13 @@ main:
   - name: News
     url: '#news'
     weight: 20
-  - name: Team
-    url: '#group'
-    weight: 30
+  # - name: Team
+  #   url: '#group'
+  #   weight: 30
   - name: Publications
     url: '#publications'
+    weight: 30
+  - name: Awards
+    url: '#awards'
     weight: 40
   
